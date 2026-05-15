@@ -1,23 +1,31 @@
 name: Label Sync
 
 on:
+  # 定義ファイルが変更されたら自動実行
   push:
     branches:
       - main
+      - master
     paths:
-      - ".github/labels.yml"
-  workflow_dispatch: # 手動実行も可能にする
+      - ".github/labels.yaml"
+  # 手動でも実行可能にする
+  workflow_dispatch:
 
 jobs:
-  label-sync:
+  labeler:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Run Labeler
-        uses: michenriksen/labeler-action@v1
+      - name: Sync Labels
+        uses: crazy-max/ghaction-github-labeler@v5
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          from-file: .github/labels.yml
-          # 既存のラベルを削除したくない場合は false に設定
-          delete-other-labels: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yaml
+          # trueにすると、定義ファイルにない既存ラベルを削除します（完全同期）
+          # 既存ラベルを残したい場合は false にしてください
+          prune: false
