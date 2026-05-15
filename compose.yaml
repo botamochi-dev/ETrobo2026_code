@@ -1,0 +1,9 @@
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/etrobo/spike-rt/sdk/workspace/ETrobo2026_code
+    # デフォルトのコマンドを実行しないよう待機状態にする
+    command: tail -f /dev/null
