@@ -5,7 +5,12 @@
         "*.h": "cpp"
     },
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "ms-vscode.cpptools",
-    "C_Cpp.clang_format_path": "clang-format",
+    "[c]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "C_Cpp.formatting": "clangFormat",
     "C_Cpp.clang_format_sortIncludes": false
 }
