@@ -89,4 +89,12 @@ git config user.email <GitHub提供の非公開メールアドレス>
 
 ### PR作成
 
+ブランチの発行後に https://github.com/botamochi-dev/ETrobo2026_code にアクセスすると下記のようにブランチがプッシュされた通知が来ます。この`Compare&pull request`をクリックします。
+![](image/PR-notice.png) 
+
+すると、このようにプルリクエストの作成画面が表示されます。タイトルや説明などがある場合には追加し、`Create pull request`をクリックします。
+![](image/PR-create.png) 
+
 ### mainブランチへのマージ
+
+`Merge pull request` を押します。

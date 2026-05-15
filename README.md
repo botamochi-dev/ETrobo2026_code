@@ -30,30 +30,5 @@
 ### 2. [📝 コーディング & コメント規約](Docs/CODING_COMMENTS.md)
 *   コーディングスタイル、命名規則について記述しています。
 
----
-
-## 🚀 セットアップ手順 (Getting Started)
-
-### 1. リポジトリのクローン
-Git LFS がインストールされていることを確認し、リポジトリをクローンします。
-
-```bash
-# LFSの確認
-git lfs install
-
-# クローン
-git clone [Repository URL]
-```
-
-### 2. Unity プロジェクトを開く
-*   Unity Hub から対象のフォルダを開きます。
-*   初回起動時はライブラリのインポートに時間がかかります。
-
-### 3. Visual Studio の設定
-1.  Unity エディタメニュー: `Edit > Preferences > External Tools` を開く。
-2.  `External Script Editor` が **"Visual Studio 2022"** になっているか確認。
-3.  `Generate .csproj files` のチェックボックス（Embedded packages等）を確認し、`Regenerate project files` をクリック。
-
-### 4. 動作確認
-1.  `Assets/_Project/Scenes/Main/` 以下のマスターシーンを開く。
-2.  再生ボタンを押し、エラーが出ないことを確認する。
+### 3. [🚀 コントリビューションガイドライン](Docs/CONTRIBUTING.md)
+*   画像付きでクローンからマージまでの開発の一連の流れを説明しています。
