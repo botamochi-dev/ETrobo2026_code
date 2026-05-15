@@ -1,0 +1,55 @@
+- name: "add"
+  color: "d73a4a"
+  description: "新しいリソースやファイルの追加"
+
+- name: "bug/fix"
+  color: "d73a4a"
+  description: "誤動作、予期せぬ挙動に関するもの。"
+
+- name: "chore"
+  color: "bfd4f2"
+  description: "CI/CD設定、メタファイル、単純なアセットの追加・削除など雑務。"
+
+- name: "docs"
+  color: "0075ca"
+  description: "README、Wiki、APIドキュメントなどの更新や修正。"
+
+- name: "feature"
+  color: "a2eeef"
+  description: "新しい機能の追加"
+
+- name: "idea"
+  color: "2cbe4e"
+  description: "新しいアイデアや提案の議論"
+
+- name: "P0"
+  color: "b60205"
+  description: "他のシステムへの影響が大きい、リリースに必須、緊急対応が必要な問題。"
+
+- name: "P1"
+  color: "2cbe4e"
+  description: "通常の機能追加、改善など。"
+
+- name: "P2"
+  color: "0075ca"
+  description: "コードのリファクタリング、内部的な改善などの軽微な問題"
+
+- name: "refactor"
+  color: "f29513"
+  description: "動作を変えない内部的なコードの整理、改善。"
+
+- name: "remove"
+  color: "6f42c1"
+  description: "不要なファイルやコードの削除"
+
+- name: "style"
+  color: "e99695"
+  description: "見た目の修正やフォーマットの調整（コードの意味に影響しない変更）"
+
+- name: "test"
+  color: "c5def5"
+  description: "テストコードの追加や修正"
+
+- name: "update"
+  color: "f9d0c4"
+  description: "既存機能のアップデートやライブラリの更新"
