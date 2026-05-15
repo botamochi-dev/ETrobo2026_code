@@ -1,0 +1,68 @@
+name: 🧹 メンテナンス・その他作業 (Maintenance)
+description: リファクタリング、ドキュメント更新、設定ファイル変更など、挙動を変えないタスク。
+title: "<Prefix>: <ここに作業の概要を簡潔に記入>"
+labels:
+  -
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### ⚙️ Maintenance Task
+        **このIssueの対応ブランチは `chore/`,`refactor/`,`doc/` カテゴリを使用してください。**
+        **対応するコミットPrefixは `chore:`,`refactor:`,`docs:`,`test:` です。**
+
+        **赤い印（*）がついている項目は必須です。**
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      description: |
+        このタスクの優先度を選択してください。
+      options:
+        - P0 (緊急対応が必要)
+        - P1 (通常)
+        - P2 (後回しで良い)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: commit-prefix
+    attributes:
+      label: 🏷️ 作業カテゴリ
+      description: |
+        この作業の主な内容を選択してください。
+      options:
+        - refactor (コード整理)
+        - docs (ドキュメント変更)
+        - chore (雑務/設定)
+        - test (テストコード)
+        - style (コード整形)
+        - add (新しいリソースやファイルの追加)
+        - remove (不要なファイルやコードの削除)
+        - update (既存機能やライブラリの更新)
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: 🎯 タスク内容
+      description: |
+        このタスクで何を行うのか、具体的な内容を箇条書きで簡潔に記載してください。
+      placeholder: |
+        例（refactor）: LineTracer.cpp 内のマジックナンバーを定数化する
+        例（chore）: Makefile のビルドオプションを最適化する、シミュレータ環境の更新
+    validations:
+      required: true
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: 💡 変更の理由 (任意)
+      description: |
+        なぜこの作業が必要なのかを簡潔に記載してください。
+      placeholder: |
+        例：コードの可読性を上げるため。
+    validations:
+      required: false

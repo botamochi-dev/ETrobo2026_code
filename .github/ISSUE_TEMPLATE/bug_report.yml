@@ -1,0 +1,81 @@
+name: 🐛 バグ報告 (Bug Fix)
+description: 発見したバグや不具合を報告する際はこちらを選択してください。
+title: "[bug/fix] <ここにバグの概要を簡潔に記入>"
+labels:
+  - bug/fix
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 🚨 Bug Report
+        **このIssueの対応ブランチは `fix/` カテゴリを使用してください。**
+        **対応するコミットPrefixは `fix:` です。**
+
+        **赤い印（*）がついている項目は必須です。**
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      description: |
+        このIssueの緊急度を選択してください。
+      options:
+        - P0 (緊急対応が必要)
+        - P1 (通常)
+        - P2 (後回しで良い)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: 🛣️ 環境 / コース
+      description: |
+        バグが発生した環境・コースを選択してください。
+      options:
+        - 実機 (SPIKE)
+        - シミュレータ (Athrill / WRO)
+        - Lコース
+        - Rコース
+        - 共通 / その他
+    validations:
+      required: true
+
+  - type: textarea
+    id: overview
+    attributes:
+      label: 📝 概要
+      description: |
+        発生しているバグについて、**何が起きているのか**を具体的に説明してください。
+      placeholder: |
+        例：特定の区間でライントレースを外れる、Bluetooth通信が切断される、セグフォでクラッシュするなど
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 👣 再現手順
+      description: |
+        バグを**再現するための具体的な手順**を、ステップバイステップで分かりやすく記載してください。
+      placeholder: |
+        1. シミュレータ上でLコースを選択する。
+        2. 走行開始パラメータとして `speed: 80, pid: (1.2, 0.1, 0.5)` を設定。
+        3. スタート後、最初の直線を抜けた直後のカーブで黒線を完全に見失う。
+    validations:
+      required: true
+
+  - type: textarea
+    id: error-logs
+    attributes:
+      label: 📜 エラーログ / 走行ログ
+      description: |
+        発生時に出力されている**コンソールログ**、**エラーメッセージ**、または**走行ログ**があれば、コピーして貼り付けてください。
+      placeholder: |
+        ```
+        [ERROR] ColorSensor read error: resource busy
+        または
+        Segmentation fault (core dumped)
+        ```
+    validations:
+      required: false

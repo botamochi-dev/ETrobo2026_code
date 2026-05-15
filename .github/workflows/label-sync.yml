@@ -1,0 +1,23 @@
+name: Label Sync
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/labels.yml"
+  workflow_dispatch: # 手動実行も可能にする
+
+jobs:
+  label-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Labeler
+        uses: michenriksen/labeler-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          from-file: .github/labels.yml
+          # 既存のラベルを削除したくない場合は false に設定
+          delete-other-labels: false

@@ -1,0 +1,61 @@
+name: 🛠️ 機能開発 (Feature)
+description: 実装が確定した新機能や大きな機能修正に関するタスク
+title: "[feat] <ここに機能のタイトルを簡潔に記入>"
+labels:
+  - feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### ✨ Feature Development
+        **このIssueの対応ブランチは `feature/` カテゴリを使用してください。**
+        **対応するコミットPrefixは `feat:` または `update:` です。**
+
+        **赤い印（*）がついている項目は必須です。**
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: 優先度
+      description: |
+        このタスクの優先度を選択してください。
+      options:
+        - P0 (緊急対応が必要)
+        - P1 (通常)
+        - P2 (後回しで良い)
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: 🎯 タスク内容 (ゴール)
+      description: |
+        このタスクで何を**最終的に達成するのか**、具体的なゴールを箇条書きで分かりやすく簡潔に記載してください。
+        （実装対象の**モジュール名**や**クラス名**を含めると効果的です。）
+      placeholder: |
+        例：難所（スマートゲート等）の通過ロジックを実装する。
+        例：LineTracer.cpp に PID制御の目標値を区間ごとに変更する機能を追加する。
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical-spec
+    attributes:
+      label: ⚙️ 技術的な実装詳細 (任意)
+      description: |
+        実装上の懸念点、使用するセンサー/モーターの使い方、設計上の注意点などを記載してください。
+      placeholder: |
+        例：- カラーセンサーの値はHSV変換してから判定に使用すること。
+        例：タスク周期（例：4ms）を超過しないよう処理を軽くすること。
+    validations:
+      required: false
+
+  - type: textarea
+    id: reference-info
+    attributes:
+      label: 🔗 参考情報 (任意)
+      description: |
+        タスクに関連する画像、URL、既存ドキュメントへのリンクなどを記載してください。
+    validations:
+      required: false

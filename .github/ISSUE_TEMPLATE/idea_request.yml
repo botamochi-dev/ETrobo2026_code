@@ -1,0 +1,42 @@
+name: ✨ 新しいアイデアを提案 (Idea)
+description: プロジェクトに新しいアイデアや改善案を提案します。
+title: "[idea] <ここにアイデアのタイトルを簡潔に記入>"
+labels:
+  - idea
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### 💡 Idea Proposal
+        このIssueは検討段階です。実装が決定した場合、別途 **`🛠️ 機能開発`** Issueを作成し、優先度を設定してください。
+
+  - type: textarea
+    id: idea-overview
+    attributes:
+      label: 📝 アイデア概要 *
+      description: |
+        新しいアイデアについて、**何を実現したいのか**を具体的に説明してください。
+      placeholder: |
+        （例：交差点判定処理に自己位置推定を組み合わせる、走行ログの可視化ツール導入、新しいアーキテクチャ設計など）
+    validations:
+      required: true
+
+  - type: textarea
+    id: why-idea
+    attributes:
+      label: 💡 アイデアの提案理由 *
+      description: |
+        なぜこのアイデアを提案するのか、その**背景や目的、期待される効果**を具体的に記載してください。
+      placeholder: |
+        このアイデアが解決する問題や、もたらすメリットを記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference-info
+    attributes:
+      label: 🔗 参考情報 (任意)
+      description: |
+        関連する画像、URL、既存ドキュメントへのリンクなどを記載してください。
+    validations:
+      required: false
