@@ -1,0 +1,75 @@
+name: Auto Label Issues
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  auto_label:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+
+    steps:
+      - name: 🏷️ 1. Extract Priority Labels
+        id: extract_priority
+        run: |
+          ISSUE_BODY="${{ github.event.issue.body }}"
+          PRIORITY_LABELS=""
+
+          # ----------------------------------------------------
+          # 1. 優先度 (Priority) ラベル (P0, P1, P2)
+          # ----------------------------------------------------
+          if [[ "$ISSUE_BODY" == *P0\ \(緊急対応が必要\)* ]]; then
+              PRIORITY_LABELS="P0"
+          elif [[ "$ISSUE_BODY" == *P1\ \(通常\)* ]]; then
+              PRIORITY_LABELS="P1"
+          elif [[ "$ISSUE_BODY" == *P2\ \(後回しで良い\)* ]]; then
+              PRIORITY_LABELS="P2"
+          fi
+
+          echo "priority_label=$PRIORITY_LABELS" >> $GITHUB_OUTPUT
+
+      - name: 🏷️ 2. Apply Priority Label
+        # priority_labelが空ではない場合のみ実行
+        if: steps.extract_priority.outputs.priority_label != ''
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: ${{ steps.extract_priority.outputs.priority_label }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🏷️ 3. Extract and Apply Category Labels
+        id: extract_category
+        run: |
+          ISSUE_BODY="${{ github.event.issue.body }}"
+          CATEGORY_LABELS=""
+
+          # ----------------------------------------------------
+          # メンテナンスカテゴリのラベル
+          # ----------------------------------------------------
+          if [[ "$ISSUE_BODY" == *refactor\ \(コード整理\)* ]]; then
+            CATEGORY_LABELS="refactor"
+          elif [[ "$ISSUE_BODY" == *docs\ \(ドキュメント変更\)* ]]; then
+            CATEGORY_LABELS="docs"
+          elif [[ "$ISSUE_BODY" == *chore\ \(雑務/設定\)* ]]; then
+            CATEGORY_LABELS="chore"
+          elif [[ "$ISSUE_BODY" == *test\ \(テストコード\)* ]]; then
+            CATEGORY_LABELS="test"
+          elif [[ "$ISSUE_BODY" == *style\ \(コード整形\)* ]]; then
+            CATEGORY_LABELS="style"
+          elif [[ "$ISSUE_BODY" == *add\ \(新しいリソースやファイルの追加\)* ]]; then
+            CATEGORY_LABELS="add"
+          elif [[ "$ISSUE_BODY" == *remove\ \(不要なファイルやコードの削除\)* ]]; then
+            CATEGORY_LABELS="remove"
+          elif [[ "$ISSUE_BODY" == *update\ \(既存機能やライブラリの更新\)* ]]; then
+            CATEGORY_LABELS="update"
+          fi
+
+          echo "category_labels=$CATEGORY_LABELS" >> $GITHUB_OUTPUT
+
+      - name: 🏷️ 4. Apply Category Labels
+        if: steps.extract_category.outputs.category_labels != ''
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          labels: ${{ steps.extract_category.outputs.category_labels }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
