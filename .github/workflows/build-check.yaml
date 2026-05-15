@@ -2,8 +2,13 @@ name: Build Check
 
 on:
   push:
-    branches: ["master", "main"]
+    paths:
+      - "main"
+      - "main/**"
   pull_request:
+    paths:
+      - "main"
+      - "main/**"
 
 jobs:
   build:
