@@ -1,0 +1,24 @@
+name: Format Check
+
+on:
+  push:
+    branches: ["master", "main"]
+  pull_request:
+
+jobs:
+  format-check:
+    runs-on: ubuntu-22.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+
+      - name: Run clang-format check
+        run: |
+          find ./ -type f \( -name "*.cpp" -o -name "*.h" \) \
+          | xargs clang-format --dry-run --Werror

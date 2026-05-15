@@ -1,0 +1,32 @@
+name: Build Check
+
+on:
+  push:
+    paths:
+      - "main"
+      - "main/**"
+  pull_request:
+    paths:
+      - "main"
+      - "main/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      # Dockerfileを使って、ランナーの中でDockerイメージをビルド
+      - name: Build Docker image
+        run: docker build -t etrobo2026_builder .
+
+      # コンテナを起動し、ETrobo2026_code のビルドを実行する
+      - name: Run build in container
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}:/etrobo/spike-rt/sdk/workspace/ETrobo2026_code \
+            etrobo2026_builder \
+            bash -c "make img=ETrobo2026_code -C /etrobo/spike-rt/sdk/workspace"
