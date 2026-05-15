@@ -56,7 +56,8 @@ git config user.email <GitHub提供の非公開メールアドレス>
 
 2. `新しいブランチを作成`をクリックし、作成するブランチ名を入力する。
 ブランチ名の命名は[Git / GitHub 運用フロー](../Docs/GIT_WORKFLOW.md)を参考にしてください。
-![](image/branch-select.png)
+
+    ![](image/branch-select.png)
 
     ブランチが正常に作成されると左下の表記が作成したブランチ名になります。
 
@@ -72,7 +73,8 @@ git config user.email <GitHub提供の非公開メールアドレス>
 ![](image/sourcetree.png)
 
 2. コミットの前段階として、変更したファイルをステージングという状態にします。
-![](image/stage.png)
+
+    ![](image/stage.png)
 
 3. 赤枠の部分にコミットメッセージを入力し、コミットボタンを押します。コミットルールは[Git / GitHub 運用フロー](../Docs/GIT_WORKFLOW.md)を参考にしてください。
 
