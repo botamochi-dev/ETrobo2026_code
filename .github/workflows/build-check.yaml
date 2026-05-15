@@ -2,12 +2,11 @@ name: Build Check
 
 on:
   push:
+    branches: ["main"]
     paths:
-      - "main"
       - "main/**"
   pull_request:
     paths:
-      - "main"
       - "main/**"
 
 jobs:
@@ -23,10 +22,10 @@ jobs:
       - name: Build Docker image
         run: docker build -t etrobo2026_builder .
 
-      # コンテナを起動し、ETrobo2026_code のビルドを実行する
+      # コンテナを起動し、main ディレクトリのビルドを実行する
       - name: Run build in container
         run: |
           docker run --rm \
-            -v ${{ github.workspace }}:/etrobo/spike-rt/sdk/workspace/ETrobo2026_code \
+            -v ${{ github.workspace }}/main:/etrobo/spike-rt/sdk/workspace/main \
             etrobo2026_builder \
-            bash -c "make img=ETrobo2026_code -C /etrobo/spike-rt/sdk/workspace"
+            bash -c "make img=main -C /etrobo/spike-rt/sdk/workspace"
