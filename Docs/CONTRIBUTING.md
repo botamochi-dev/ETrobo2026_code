@@ -78,9 +78,12 @@ git config user.email <GitHub提供の非公開メールアドレス>
 
     ![](image/commit-message.png)  
 
-
 ### プッシュ
 
+コミットを行うと下記のように`Branchの発行`と表示されるのでこれをクリックします。
+これによりローカルブランチをリモートにも反映します。
+
+![](image/push.png)  
 
 ## 3. PRの作成・マージ
 
