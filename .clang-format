@@ -1,8 +1,96 @@
 BasedOnStyle: LLVM
+Language: Cpp
+Standard: Cpp11
+DisableFormat: false
+
+# --- インデントとタブの設定 ---
 IndentWidth: 4
+TabWidth: 4
+ContinuationIndentWidth: 4
 UseTab: Never
+
+# --- 波括弧（ブレース）の配置 ---
 BreakBeforeBraces: Attach
-AllowShortIfStatementsOnASingleLine: false
-IndentCaseLabels: true
-ColumnLimit: 0
+# ※BreakBeforeBraces: Attach を指定すると、以下の BraceWrapping は自動的に無視されますが、
+# 明示的に行末くっつき（false）に統一しておきます。
+BraceWrapping:
+  AfterClass: false
+  AfterControlStatement: false
+  AfterEnum: false
+  AfterFunction: false
+  AfterNamespace: false
+  AfterObjCDeclaration: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeCatch: false
+  BeforeElse: false
+  IndentBraces: false
+
+# --- クラス・構造体の設定 ---
+# IndentWidth(4) に対して -4 することで、public/private がクラスの左端に綺麗に揃います
 AccessModifierOffset: -4
+
+# --- switch文の設定 ---
+IndentCaseLabels: true
+AllowShortCaseLabelsOnASingleLine: false
+
+# --- 1行の制限と改行ルール ---
+ColumnLimit: 0 # 自動改行を無効化し、開発者の意図した改行位置を維持します
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: false # 短いif文の1行書きを禁止（安全重視）
+AllowShortLoopsOnASingleLine: false # ループも同様に1行書きを禁止
+
+# --- アライメント（整列）の設定 ---
+AlignAfterOpenBracket: Align
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignEscapedNewlinesLeft: true
+AlignOperands: true
+AlignTrailingComments: true
+
+# --- 空白（スペース）の挿入ルール ---
+SpaceBeforeAssignmentOperators: true
+SpaceBeforeParens: Never
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+SpacesInAngles: false
+SpacesInCStyleCastParentheses: false
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceAfterCStyleCast: false
+
+# --- ポインタの配置 ---
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# --- コンストラクタ初期化子リスト ---
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+ConstructorInitializerIndentWidth: 4
+BreakConstructorInitializersBeforeComma: false
+
+# --- 引数・文字列・その他設定 ---
+BinPackArguments: true
+BinPackParameters: true
+AllowAllParametersOfDeclarationOnNextLine: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: true
+BreakBeforeBinaryOperators: All
+BreakBeforeTernaryOperators: true
+BreakStringLiterals: true
+Cpp11BracedListStyle: false
+KeepEmptyLinesAtTheStartOfBlocks: false
+MaxEmptyLinesToKeep: 1
+NamespaceIndentation: All
+ReflowComments: true
+
+# --- ロボコン・組み込み向けの安全設定 ---
+SortIncludes: false # インクルード順が変わる事によるビルドエラーを防止
+CommentPragmas: '\*'
+IndentWrappedFunctionNames: false
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 120
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 200
