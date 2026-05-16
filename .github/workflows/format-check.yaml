@@ -1,4 +1,4 @@
-name: Format Check
+name: Format and Fix
 
 on:
   push:
@@ -10,19 +10,29 @@ on:
       - "main/**"
 
 jobs:
-  format-check:
+  format:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Install clang-format
         run: sudo apt-get update && sudo apt-get install -y clang-format
 
-      - name: Run clang-format check
+      - name: Run clang-format
         run: |
           find ./main -type f \( -name "*.c" -o -name "*.cpp" -o -name "*.h" -o -name "*.hpp" \) \
-          | xargs clang-format --dry-run --Werror
+          | xargs clang-format -i
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "style: auto format with clang-format"
+          file_pattern: "main/*.c main/*.cpp main/*.h main/*.hpp"
