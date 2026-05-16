@@ -7,7 +7,6 @@
 
 /* メインタスク(起動時にのみ関数コールされる) */
 void main_task(intptr_t unused) {
-
     hub_speaker_set_volume(100);
     dly_tsk(1 * 1000 * 1000);
     hub_display_char('3');
