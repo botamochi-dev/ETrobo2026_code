@@ -8,6 +8,8 @@ on:
   pull_request:
     paths:
       - "main/**"
+  # 手動でも実行可能にする
+  workflow_dispatch:
 
 jobs:
   build:
