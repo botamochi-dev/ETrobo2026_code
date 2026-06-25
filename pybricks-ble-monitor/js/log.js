@@ -86,9 +86,10 @@ function renderAllSensors() {
                 html += `<div class="sensor-color-swatch" style="background:rgb(${r},${g},${b})"></div>`;
             }
 
-            // 値と列名
+            // 値と列名（count列は表示しない）
             html += `<div class="sensor-values">`;
             cells.forEach((val, i) => {
+                if (i === 0) return;
                 const label = (config.headers && config.headers[i]) ? config.headers[i] : `col${i}`;
                 // 閾値チェックして値の色を変える
                 const isHit = config.thresholds && config.thresholds.some(rule => {
